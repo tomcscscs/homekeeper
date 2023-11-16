@@ -6,10 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>안녕하세요#메인#</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style type="text/css">
 body {
 	text-align: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap');
 
 
 </style>
@@ -18,7 +21,7 @@ body {
 <div style="font-size: 100px">
 
 
-<p>환영한다. 위해 평화 너희 가계의</p>
+<p style="font-family:'Noto Serif KR', serif; ">환영한다. 위해 평화 너희 가계의</p>
 
 </div>
 
