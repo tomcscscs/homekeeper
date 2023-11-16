@@ -6,12 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>안녕하세요#메인#</title>
+<style type="text/css">
+body {
+	text-align: center;
+}
+
+
+</style>
 </head>
 <body>
+<div style="font-size: 100px">
+
+
 <p>환영한다. 위해 평화 너희 가계의</p>
-<h1>홈.키.퍼</h1>
+
+</div>
+
+<h1><b>홈.키.퍼</b></h1>
 <div><fmt:formatDate value="${date}" pattern ="yyyy,MM,dd HH:mm:ss"/> </div>
 
+<div style="margin: 50px">
+<a href="/homekeeper/login">이미 회원이시간요?</a><br>
+</div>
+
+<div style="margin: 50px">
+<a href="/homekeeper/register">처음이시라구요.</a>
+</div>
 
 
 </body>
