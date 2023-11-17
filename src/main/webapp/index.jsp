@@ -13,23 +13,23 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;900&display=swap');
 </style>
+
 </head>
 <body>
-<div style="font-size: 100px">
+<div style="font-size: 90px">
 
 
-<p style="font-family:'Noto Serif KR', serif; ">환영한다. 위해 평화 너희 가계의</p>
+<div style="font-family:'Noto Serif KR', serif; font-size: 60px; background-color:black; color: white;" ><fmt:formatDate value="${date}" pattern ="yyyy,MM,ddHH:mm:ss"/></div>
+<p style="font-family:'Noto Serif KR', serif; ">환영합니다.<br><div style="font-family:'Noto Serif KR', serif; ">위해 평화 너희 가계의</div></p>
 
 </div>
 
-<h1><b>홈.키.퍼</b></h1>
-<div><fmt:formatDate value="${date}" pattern ="yyyy,MM,dd HH:mm:ss"/> </div>
+<h1 class="align-right"><b>홈.키.퍼</b></h1>
 
 <div style="margin: 50px">
-<a href="/homekeeper/login">이미 회원이시간요?</a><br>
+<a href="/homekeeper/login">이미 회원이실까요?</a><br>
 </div>
 
 <div style="margin: 50px">
