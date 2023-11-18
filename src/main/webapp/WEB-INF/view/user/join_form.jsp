@@ -26,7 +26,7 @@
 			name="gender" value="">비공개 <label>아바타</label>
 		<div>
 			<c:forEach var="one" items="${avatars}">
-				${one.id }**<input type="radio" name="avatarId" value="${one.id}" />
+				${one.id }*nn*<input type="radio" name="avatarId" value="${one.id}" />
 				
 			
 			
