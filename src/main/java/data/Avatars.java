@@ -9,11 +9,11 @@ public class Avatars {
 		super();
 	}
 
-	public Avatars(String id, String alt, String image_url) {
+	public Avatars(String id, String alt, String imageUrl) {
 		super();
 		this.id = id;
 		this.alt = alt;
-		this.imageUrl = image_url;
+		this.imageUrl = imageUrl;
 	}
 
 	public String getId() {
@@ -32,12 +32,12 @@ public class Avatars {
 		this.alt = alt;
 	}
 
-	public String getImage_url() {
+	public String getImageUrl() {
 		return imageUrl;
 	}
 
-	public void setImage_url(String image_url) {
-		this.imageUrl = image_url;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }

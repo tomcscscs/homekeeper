@@ -40,7 +40,7 @@ public class AvatarsProcessor {
 	public List<Avatars> findAll() throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper", "oracle")) {
-			String sql = "SELECT * FROM avatars ORDER BY alt desc";
+			String sql = "SELECT * FROM avatars ORDER BY id desc";
 			PreparedStatement pst = conn.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();

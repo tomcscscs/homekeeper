@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>join.jsp</title>
+
 </head>
 <body>
+	
 	<form action="${pageContext.servletContext.contextPath }/joinHandle">
 		<h3>기본</h3>
 		<hr>
@@ -26,19 +28,24 @@
 			name="gender" value="">비공개 <label>아바타</label>
 		<div>
 			<c:forEach var="one" items="${avatars}">
-				${one.id }*^^*<input type="radio" name="avatarId" value="${one.id}" />
+							<img alt="피엔지파일" src="${pageContext.servletContext.contextPath}${one.imageUrl}"/>
+							<input type="radio" name="avatarId" value="${one.id}"/>${one.id }
+			
+			</c:forEach>
+		</div>
 				
 			
 			
-			</c:forEach>
 			
 			
-		</div>
+		
 
 
 
 
 	</form>
+	
+	
 
 </body>
 </html>
