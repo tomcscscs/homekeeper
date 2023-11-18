@@ -33,7 +33,7 @@ body {
 </div>
 
 <div style="margin: 50px">
-<a href="/homekeeper/register">처음이시라구요.</a>
+<a href="/homekeeper/join">처음이시라구요.</a>
 </div>
 
 
