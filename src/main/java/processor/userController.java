@@ -41,7 +41,7 @@ public class userController {
 
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
 				"oracle")) {
-			String sql = "SELECT * FROM users WHERE ID=?";
+			String sql = "SELECT * FROM USERS WHERE ID=?";
 
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, id);
@@ -49,12 +49,13 @@ public class userController {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				users one = new users();
+				
 				one.setId(rs.getString("id"));
 				one.setPassword(rs.getString("password"));
 				one.setBirth(rs.getInt("birth"));
 				one.setGender(rs.getString("gender"));
 				one.setNickname(rs.getString("nickname"));
-				one.setAvatarId(rs.getString("avatarId"));
+				one.setAvatarId(rs.getString("avatar_Id"));
 
 				return one;
 //				String id = rs.getString(1); // rs.getInt("code")
