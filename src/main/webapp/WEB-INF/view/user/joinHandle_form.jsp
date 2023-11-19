@@ -10,7 +10,7 @@
 <body>
 <h1>홈키퍼-회원가입 결과</h1>
 <c:choose>
-<c:when test="${saveResult} }">
+<c:when test="${saveResult}">
 <b>${savedUser.id}</b>가 성공적으로 등록됐습니다.  
 </c:when>
 <c:otherwise>
