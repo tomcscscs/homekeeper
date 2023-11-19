@@ -18,27 +18,23 @@ public class LoginHandleController extends HttpServlet {
 		String password = req.getParameter("password");
 
 		userController userCon = new userController();
-		boolean loginResult;
-
+		boolean loginResult=false;
 		try {
-			users found = userCon.findById(id);
-
-
-			if (found == null || !found.getPassword().equals(password)) {
-				loginResult = false;
-
-			} else {
-				loginResult = true;
-				HttpSession session = req.getSession(true);
-				session.setAttribute("logonUser", found);
-
-			}
-		} catch (Exception e) {
+		users found = userCon.findById(id);
+		
+		if(found != null && found.getPassword().equals(password)) {
+			loginResult=true;
+			HttpSession session = req.getSession(true);
+			
+		}
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		req.setAttribute("loginResult", loginResult);
-		req.getRequestDispatcher("/WEB-INF/view/user/loginHandle_form.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/view/user/loginHandle_form.jsp").forward(req, resp);
+		
+
+		
 
 	}
 
