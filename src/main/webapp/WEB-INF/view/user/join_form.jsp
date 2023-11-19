@@ -10,9 +10,9 @@
 
 </head>
 <body>
-<p class="align-right"><a href="${pageContext.servletContext.contextPath}/index }">메인으로</a> </p>
+<p class="align-right"><a href="${pageContext.servletContext.contextPath}/index">메인으로</a> </p>
 	
-	<form action="${pageContext.servletContext.contextPath }/joinHandle">
+	<form method="post" action="${pageContext.servletContext.contextPath }/joinHandle">
 		<h3>기본</h3>
 		<hr>
 		<div>아이디<input type="text" name="id" /></div>
@@ -21,8 +21,7 @@
 		<h3>추가정보</h3>
 		<hr>
 
-		<div>닉네임 <input type="password" name="password"></div>
-		<div>탄생년도 <select name="brith">
+		<div>탄생년도 <select name="birth">
 			<option></option>
 			<c:forEach var="year" begin="1923" end="2023">
 				<option>${year }</option>
@@ -32,9 +31,11 @@
 			type="radio" name="gender" value="F" />여성 <input type="radio"
 			name="gender" value="">비공개 </div>
 			<hr>
+			<div>닉네임=<input type="text" name="nickname"></div>
 			
 			
-			<label>아바타</label>
+			
+			<label>#아바타#</label>
 		<div>
 			<c:forEach var="one" items="${avatars}">
 							<img alt="피엔지파일" src="${pageContext.servletContext.contextPath}${one.imageUrl}"/>
@@ -42,6 +43,7 @@
 			
 			</c:forEach>
 		</div>
+		<button type="submit">등록</button>
 	</form>
 	
 	
