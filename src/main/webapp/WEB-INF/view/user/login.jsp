@@ -11,7 +11,7 @@
 <form method="post" action="${pageContext.servletContext.contextPath}/loginHandle ">
 아이디: <input type="text" name="id" ><br>
 패스워드: <input type="password" name="password"><br>
-<div style="margin-top: 50px">나를 기억해줘요<input type="checkbox" name="keep" value="true"></div> 
+<div style="margin-top: 50px"><b>나를 기억해줘요</b> 나를 기억해줘요<input type="checkbox" name="keep" value="true"></div> 
 
 
 <button type="submit">확인</button>
