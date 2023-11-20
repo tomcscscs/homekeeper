@@ -16,6 +16,8 @@ public class IndexController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setAttribute("date", new Date(System.currentTimeMillis()));
+		
+		
 
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
