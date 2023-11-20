@@ -8,6 +8,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import processor.KeepTicketsController;
 
 public class KeepTicketFilter extends HttpFilter {
 	
@@ -28,7 +29,11 @@ public class KeepTicketFilter extends HttpFilter {
 			}
 		}
 		if(found != null) {
-			String code =  
+			String code =found.getValue();
+			KeepTicketsController keepDao= new KeepTicketsController();
+			
+			
+			
 		}
 		
 		
