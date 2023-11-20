@@ -36,7 +36,7 @@ public class LoginHandleController extends HttpServlet {
 				session.setAttribute("logonUser", found);
 				// System.out.println("BBBBB");
 				if (keep != null) {
-					String code = UUID.randomUUID().toString();
+					String code = UUID.randomUUID().toString();//uuid
 					String userId = id;
 					Date expiredAt = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 30);
 
@@ -47,7 +47,7 @@ public class LoginHandleController extends HttpServlet {
 					
 					Cookie cookie = new Cookie("ticketCode", code);//uuid로 부여.
 					cookie.setPath(req.getServletContext().getContextPath());//쿠키 경로설정.
-					cookie.setMaxAge(60*60*24*30);
+					cookie.setMaxAge(60*60*24*30);//쿠키 지속시간.
 					
 					resp.addCookie(cookie);// 로그인 성공했을때 부여하는 쿠키.
 					

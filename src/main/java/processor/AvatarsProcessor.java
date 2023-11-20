@@ -10,14 +10,14 @@ import java.util.List;
 import data.Avatars;
 
 public class AvatarsProcessor {
-	public Avatars findByKey(Avatars key) throws ClassNotFoundException {
+	public Avatars findByKey(String key) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper", "oracle")) {
 
 			String sql = "SELECT * FROM avatars WHERE id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, key.getId());
+			pst.setString(1, key);
 
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
