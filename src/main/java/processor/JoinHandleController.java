@@ -2,7 +2,7 @@ package processor;
 
 import java.io.IOException;
 
-import data.users;
+import data.Users;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,12 +23,12 @@ public class JoinHandleController extends HttpServlet {
 		userController userCon = new userController();
 
 		try {
-			users found = userCon.findById(id);
+			Users found = userCon.findById(id);
 			if (found != null) {
 				req.setAttribute("saveResult", false);
 				req.setAttribute("existUser", found);
 			} else {
-				users one = new users(id, password, birth, gender, nickname, avatarId);
+				Users one = new Users(id, password, birth, gender, nickname, avatarId);
 				userCon.save(one);
 				req.setAttribute("saveResult", true);
 				req.setAttribute("savedUser", one);

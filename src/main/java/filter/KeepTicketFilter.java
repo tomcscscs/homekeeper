@@ -5,7 +5,7 @@ import java.sql.Date;
 
 import data.Avatars;
 import data.KeepTickets;
-import data.users;
+import data.Users;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -46,7 +46,7 @@ public class KeepTicketFilter extends HttpFilter {
 					String userId = foundTicket.getUserId();
 					userController userDao = new userController();
 
-					users foundUser = userDao.findById(userId);
+					Users foundUser = userDao.findById(userId);
 					request.getSession().setAttribute("logonUser", foundUser);
 					AvatarsProcessor avatarDao = new AvatarsProcessor();
 					Avatars foundAvatar = avatarDao.findByKey(foundUser.getAvatarId());

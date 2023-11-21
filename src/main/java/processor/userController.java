@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import data.users;
+import data.Avatars;
+import data.Users;
 
 public class userController {
 
-	public boolean save(users one) throws ClassNotFoundException {
+	public boolean save(Users one) throws ClassNotFoundException {
 		boolean result = false;
 		// 1. 데이터 베이스 연결
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -36,7 +37,7 @@ public class userController {
 		return result;
 	}
 	
-	public users findById(String id) throws ClassNotFoundException {
+	public Users findById(String id) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
@@ -48,7 +49,7 @@ public class userController {
 
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				users one = new users();
+				Users one = new Users();
 				
 				one.setId(rs.getString("id"));
 				one.setPassword(rs.getString("password"));
@@ -73,5 +74,47 @@ public class userController {
 		}
 
 	}
+	
+	public Users findWithAvatarById(String userId) throws ClassNotFoundException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
+				"oracle")) {
+			String sql = "select * from users u left join  avatars a on u.avatar_id = a.id where id=?";
+
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, userId);
+
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				Users user = new Users();
+				
+				user.setId(rs.getString("id"));
+				user.setPassword(rs.getString("password"));
+				user.setBirth(rs.getInt("birth"));
+				user.setGender(rs.getString("gender"));
+				user.setNickname(rs.getString("nickname"));
+				user.setAvatarId(rs.getString("avatar_Id"));
+				
+				Avatars a= new Avatars();
+				a.setId(rs.getString("avatar_id"));
+				a.setAlt(rs.getString("alt"));
+				a.setImageUrl(rs.getString("image_url"));
+				
+				user.setAvatar(a);
+				
+
+				return user;
+			} else {
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
 
 }

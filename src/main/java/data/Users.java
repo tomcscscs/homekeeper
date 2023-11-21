@@ -1,6 +1,6 @@
 package data;
 
-public class users {
+public class Users {
 	String id;
 	String password;
 	int birth;
@@ -8,11 +8,14 @@ public class users {
 	String nickname;
 	String avatarId;
 
-	public users() {
+	Avatars avatar;// 이렇게도 실행 할 수 있구나.
+
+	public Users() {
 		super();
 	}
 
-	public users(String id, String password, int birth, String gender, String nickname, String avatarId) {
+	public Users(String id, String password, int birth, String gender, String nickname, String avatarId,
+			Avatars avatar) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -20,6 +23,7 @@ public class users {
 		this.gender = gender;
 		this.nickname = nickname;
 		this.avatarId = avatarId;
+		this.avatar = avatar;
 	}
 
 	public String getId() {
@@ -68,6 +72,14 @@ public class users {
 
 	public void setAvatarId(String avatarId) {
 		this.avatarId = avatarId;
+	}
+
+	public Avatars getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatars avatar) {
+		this.avatar = avatar;
 	}
 
 }

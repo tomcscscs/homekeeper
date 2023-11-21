@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import data.Avatars;
 import data.KeepTickets;
-import data.users;
+import data.Users;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -26,7 +26,7 @@ public class LoginHandleController extends HttpServlet {
 		userController userCon = new userController();
 		boolean loginResult;
 		try {
-			users found = userCon.findById(id);// found가 유저스.!!
+			Users found = userCon.findWithAvatarById(id);// found가 유저스.!!
 
 			if (found == null || !found.getPassword().equals(password)) {
 				loginResult = false;
