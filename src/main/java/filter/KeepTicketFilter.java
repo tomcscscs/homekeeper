@@ -50,7 +50,7 @@ public class KeepTicketFilter extends HttpFilter {
 					request.getSession().setAttribute("logonUser", foundUser);
 					AvatarsProcessor avatarDao = new AvatarsProcessor();
 					Avatars foundAvatar = avatarDao.findByKey(foundUser.getAvatarId());
-					request.getSession().setAttribute("logonUserAvatar", foundAvatar);
+					request.getSession().setAttribute("logonUserAvatar", foundAvatar);// 반대로 생각하면 찾을때는 요 두개를 찾아야 사진이 나오는거쥬.
 
 				}
 

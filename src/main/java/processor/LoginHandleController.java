@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.UUID;
 
+import data.Avatars;
 import data.KeepTickets;
 import data.users;
 import jakarta.servlet.ServletException;
@@ -25,18 +26,28 @@ public class LoginHandleController extends HttpServlet {
 		userController userCon = new userController();
 		boolean loginResult;
 		try {
-			users found = userCon.findById(id);
+			users found = userCon.findById(id);// found가 유저스.!!
 
 			if (found == null || !found.getPassword().equals(password)) {
 				loginResult = false;
 				// System.out.println("AAAA");
+				
 			} else {
 				loginResult = true;
 				HttpSession session = req.getSession(true);
 				session.setAttribute("logonUser", found);
 				// System.out.println("BBBBB");
-				if (keep != null) {
-					String code = UUID.randomUUID().toString();//uuid
+				
+				AvatarsProcessor avatarDao = new AvatarsProcessor();
+				Avatars foundAvatar = avatarDao.findByKey(found.getAvatarId());//항상 위의 데이터를 실어줘야해.
+				req.getSession().setAttribute("logonUserAvatar", foundAvatar);
+				
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");// 이거 뭐야.
+				
+				
+				
+				if (keep != null) {//로그인 유지. keep 체크박스.
+					String code = UUID.randomUUID().toString();// uuid
 					String userId = id;
 					Date expiredAt = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 30);
 
@@ -44,17 +55,12 @@ public class LoginHandleController extends HttpServlet {
 
 					KeepTicketsController keepDao = new KeepTicketsController();
 					keepDao.save(ticket);
-					
-					Cookie cookie = new Cookie("ticketCode", code);//uuid로 부여.
-					cookie.setPath(req.getServletContext().getContextPath());//쿠키 경로설정.
-					cookie.setMaxAge(60*60*24*30);//쿠키 지속시간.
-					
+
+					Cookie cookie = new Cookie("ticketCode", code);// uuid로 부여.
+					cookie.setPath(req.getServletContext().getContextPath());// 쿠키 경로설정.
+					cookie.setMaxAge(60 * 60 * 24 * 30);// 쿠키 지속시간.
+
 					resp.addCookie(cookie);// 로그인 성공했을때 부여하는 쿠키.
-					
-					
-					
-					
-					
 
 				}
 

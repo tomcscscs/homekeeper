@@ -19,6 +19,7 @@
 		</c:otherwise>
 	</c:choose>
 	<a href="${pageContext.servletContext.contextPath}/login">뒤로</a>
+	<a href="${pageContext.servletContext.contextPath}/index">뒤로</a>
 
 
 

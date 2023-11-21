@@ -23,8 +23,7 @@ ${existUser.id}는 이미 존재하는 회원입니다.
 	<a href="${pageContext.servletContext.contextPath}/join"><button>뒤로</button>
 	</a>
 
-
-
+	
 
 
 
