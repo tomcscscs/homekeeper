@@ -38,12 +38,6 @@ public class LoginHandleController extends HttpServlet {
 				session.setAttribute("logonUser", found);
 				// System.out.println("BBBBB");
 				
-				AvatarsProcessor avatarDao = new AvatarsProcessor();
-				Avatars foundAvatar = avatarDao.findByKey(found.getAvatarId());//항상 위의 데이터를 실어줘야해.
-				req.getSession().setAttribute("logonUserAvatar", foundAvatar);
-				
-				
-				
 				if (keep != null) {//로그인 유지. keep 체크박스.
 					String code = UUID.randomUUID().toString();// uuid
 					String userId = id;

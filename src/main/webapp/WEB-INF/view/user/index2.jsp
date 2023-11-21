@@ -27,7 +27,9 @@ body {
 </div>
 
 <h1 class="align-right"><b>홈.키.퍼(로그인전용)</b></h1>
-<div><img alt="pic" src="${pageContext.servletContext.contextPath}${logonUserAvatar.imagUrl}" style="width: 20px"/></div>
+<div><img alt="pic" src="${pageContext.servletContext.contextPath}${sessionScope.logonUser.avatar.imageUrl}" style="width: 20px"/></div>
+<b>${sessionScope.logonUser.nickname }</b>님 로그온.
+
 
 
 
