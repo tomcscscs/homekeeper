@@ -27,14 +27,9 @@ body {
 </div>
 
 <h1 class="align-right"><b>홈.키.퍼(로그인전용)</b></h1>
+<div><img alt="pic" src="${pageContext.servletContext.contextPath}${logonUserAvatar.imagUrl}" style="width: 20px"/></div>
 
-<div style="margin: 50px">
-<a href="/homekeeper/login">이미 회원이실까요?</a><br>
-</div>
 
-<div style="margin: 50px">
-<a href="/homekeeper/join">처음이시라구요.</a>
-</div>
 
 
 </body>

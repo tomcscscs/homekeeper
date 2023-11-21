@@ -42,14 +42,12 @@ public class LoginHandleController extends HttpServlet {
 				Avatars foundAvatar = avatarDao.findByKey(found.getAvatarId());//항상 위의 데이터를 실어줘야해.
 				req.getSession().setAttribute("logonUserAvatar", foundAvatar);
 				
-				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");// 이거 뭐야.
-				
 				
 				
 				if (keep != null) {//로그인 유지. keep 체크박스.
 					String code = UUID.randomUUID().toString();// uuid
 					String userId = id;
-					Date expiredAt = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 30);
+					Date expiredAt = new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 30);
 
 					KeepTickets ticket = new KeepTickets(code, userId, expiredAt);
 
@@ -64,6 +62,8 @@ public class LoginHandleController extends HttpServlet {
 
 				}
 
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");// 
+				
 			}
 			req.setAttribute("loginResult", loginResult);
 
