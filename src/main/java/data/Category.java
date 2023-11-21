@@ -1,4 +1,4 @@
-package data;//
+package data;
 
 public class Category {
 	int id;
