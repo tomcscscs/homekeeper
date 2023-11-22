@@ -1,4 +1,4 @@
-package processor;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 import data.KeepTickets;
 
-public class KeepTicketsController {
+public class KeepTicketsDao {
 	public boolean save(KeepTickets one) throws ClassNotFoundException {
 		boolean result = false;
 		// 1. 데이터 베이스 연결

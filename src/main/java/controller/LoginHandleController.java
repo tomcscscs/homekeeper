@@ -1,9 +1,11 @@
-package processor;
+package controller;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.util.UUID;
 
+import dao.KeepTicketsDao;
+import dao.UsersDao;
 import data.Avatars;
 import data.KeepTickets;
 import data.Users;
@@ -23,7 +25,7 @@ public class LoginHandleController extends HttpServlet {
 		String password = req.getParameter("password");
 		String keep = req.getParameter("keep");
 
-		userController userCon = new userController();
+		UsersDao userCon = new UsersDao();
 		boolean loginResult;
 		try {
 			Users found = userCon.findWithAvatarById(id);// found가 유저스.!!
@@ -45,7 +47,7 @@ public class LoginHandleController extends HttpServlet {
 
 					KeepTickets ticket = new KeepTickets(code, userId, expiredAt);
 
-					KeepTicketsController keepDao = new KeepTicketsController();
+					KeepTicketsDao keepDao = new KeepTicketsDao();
 					keepDao.save(ticket);
 
 					Cookie cookie = new Cookie("ticketCode", code);// uuid로 부여.

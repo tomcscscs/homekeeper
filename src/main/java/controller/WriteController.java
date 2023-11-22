@@ -1,9 +1,11 @@
-package processor;//
+package controller;//
 
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
+import dao.CategoryDao;
+import dao.SpendLogDao;
 import data.Category;
 import data.SpendLog;
 import data.Users;
@@ -14,13 +16,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/writeComplex")
-public class WriteController extends HttpServlet {
+public class WriteController extends HttpServlet {// 두겟
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Date now = new Date(System.currentTimeMillis());
 		req.setAttribute("now", now);
 
-		CategoryController categoryDao = new CategoryController();
+		CategoryDao categoryDao = new CategoryDao();
 		try {
 			List<Category> list = categoryDao.findAll();
 			req.setAttribute("categories", list);
@@ -33,7 +35,7 @@ public class WriteController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {//두포스트
 		Date spendAt = Date.valueOf(req.getParameter("spendAt"));
 		int categoryId = Integer.parseInt(req.getParameter("categoryId"));
 		int amt = Integer.parseInt(req.getParameter("amt"));
@@ -44,7 +46,7 @@ public class WriteController extends HttpServlet {
 
 		SpendLog log = new SpendLog(0, userId, amt, spendAt, useDesc, categoryId, null);// 생성자 기준으로. 나열해야한다.
 
-		SpendLogController spendLogDao = new SpendLogController();
+		SpendLogDao spendLogDao = new SpendLogDao();
 		try {
 			boolean result = spendLogDao.save(log);
 			if (result) {

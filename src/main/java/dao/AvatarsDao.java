@@ -1,4 +1,4 @@
-package processor;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import data.Avatars;
 
-public class AvatarsProcessor {
+public class AvatarsDao {
 	public Avatars findByKey(String key) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 

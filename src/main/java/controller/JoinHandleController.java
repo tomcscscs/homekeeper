@@ -1,7 +1,8 @@
-package processor;
+package controller;
 
 import java.io.IOException;
 
+import dao.UsersDao;
 import data.Users;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class JoinHandleController extends HttpServlet {
 		String nickname = req.getParameter("nickname");
 		String avatarId = req.getParameter("avatarId");
 
-		userController userCon = new userController();
+		UsersDao userCon = new UsersDao();
 
 		try {
 			Users found = userCon.findById(id);

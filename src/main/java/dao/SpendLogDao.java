@@ -1,4 +1,4 @@
-package processor;
+package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,7 +12,7 @@ import data.Category;
 import data.SpendLog;
 import data.Users;
 
-public class SpendLogController {
+public class SpendLogDao {
 
 	public boolean save(SpendLog one) throws ClassNotFoundException {
 		boolean result = false;

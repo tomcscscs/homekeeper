@@ -1,8 +1,9 @@
-package processor;
+package controller;
 
 import java.io.IOException;
 import java.util.List;
 
+import dao.AvatarsDao;
 import data.Avatars;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ public class JoinController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		AvatarsProcessor avatarDao = new AvatarsProcessor();
+		AvatarsDao avatarDao = new AvatarsDao();
 		List<Avatars> avatars;
 		try {
 			avatars = avatarDao.findAll(); //avatarDao 라고 설정해준 것이 프로세서.

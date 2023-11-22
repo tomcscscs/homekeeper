@@ -2,7 +2,7 @@ package data;
 
 import java.sql.Date;
 
-public class SpendLog {
+public class SpendLog {//그래 결국엔 여기에 로그 데이터들이 있으니 여기에 있는 데이터를 추출하기 위해서 메소드를 만든거야.
 	int no;
 	String userId;
 	int amt;
@@ -37,7 +37,7 @@ public class SpendLog {
 		super();
 	}
 
-	public SpendLog(int no, String userId, int amt, Date spendAt, String useDesc, int categoryId) {
+	public SpendLog(int no, String userId, int amt, Date spendAt, String useDesc, int categoryId) {//카테고리 없는 버전.
 		super();
 		this.no = no;
 		this.userId = userId;

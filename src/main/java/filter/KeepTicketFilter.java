@@ -3,6 +3,9 @@ package filter;
 import java.io.IOException;
 import java.sql.Date;
 
+import dao.AvatarsDao;
+import dao.KeepTicketsDao;
+import dao.UsersDao;
 import data.Avatars;
 import data.KeepTickets;
 import data.Users;
@@ -12,9 +15,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import processor.AvatarsProcessor;
-import processor.KeepTicketsController;
-import processor.userController;
 
 public class KeepTicketFilter extends HttpFilter {
 
@@ -36,7 +36,7 @@ public class KeepTicketFilter extends HttpFilter {
 		}
 		if (found != null) {
 			String code = found.getValue();
-			KeepTicketsController keepDao = new KeepTicketsController();
+			KeepTicketsDao keepDao = new KeepTicketsDao();
 			try {
 				KeepTickets foundTicket = keepDao.findById(code);// 킵 해당 객체
 				Date now = new Date(System.currentTimeMillis());
@@ -44,7 +44,7 @@ public class KeepTicketFilter extends HttpFilter {
 
 				if (foundTicket != null && foundTicket.getExpiredAt().after(now)) { // 밸류 무효x
 					String userId = foundTicket.getUserId();
-					userController userDao = new userController();
+					UsersDao userDao = new UsersDao();
 
 					Users foundUser = userDao.findById(userId);
 					request.getSession().setAttribute("logonUser", foundUser);

@@ -1,4 +1,4 @@
-package processor;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import data.Avatars;
 import data.Users;
 
-public class userController {
+public class UsersDao {
 
 	public boolean save(Users one) throws ClassNotFoundException {
 		boolean result = false;
