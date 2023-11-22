@@ -32,7 +32,7 @@
 </c:forEach>
 </table>
 
-<a href="${pageContext.servletContext.contextPath }/writeComplex"></a>
+<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a>
 
 
 </body>
