@@ -21,14 +21,14 @@ body {
 <div style="font-size: 90px">
 
 
-<div style="font-family:'Noto Serif KR', serif; font-size: 60px; background-color:black; color: white;" ><fmt:formatDate value="${date}" pattern ="yyyy,MM,ddHH:mm:ss"/></div>
-<p style="font-family:'Noto Serif KR', serif; ">환영합니다.<br><div style="font-family:'Noto Serif KR', serif; ">위해 평화 너희 가계의</div></p>
+<div style="font-family:'Noto Serif KR', serif; font-size: 60px; background-color:black; color: white; border-radius: 15px" ><fmt:formatDate value="${date}" pattern ="yyyy,MM,ddHH:mm:ss"/></div>
+<p style="font-family:'Noto Serif KR', serif; ">환영합니다.<br><div style="font-family:'Noto Serif KR', serif; ">위해 평화 당신 가계의</div></p>
 
 </div>
 
 <h1 class="align-right"><b>홈.키.퍼(로그인전용)</b></h1>
 <div><img alt="pic" src="${pageContext.servletContext.contextPath}${sessionScope.logonUser.avatar.imageUrl}" style="width: 20px"/></div>
-<b>${sessionScope.logonUser.nickname }</b>님 로그온.
+<b>${sessionScope.logonUser.nickname }</b>님 로그온. 환영합니다. 어서오세요.
 
 
 

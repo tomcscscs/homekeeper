@@ -25,6 +25,17 @@ public class Users {
 		this.avatarId = avatarId;
 		this.avatar = avatar;
 	}
+	
+
+	public Users(String id, String password, int birth, String gender, String nickname, String avatarId) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.birth = birth;
+		this.gender = gender;
+		this.nickname = nickname;
+		this.avatarId = avatarId;
+	}
 
 	public String getId() {
 		return id;

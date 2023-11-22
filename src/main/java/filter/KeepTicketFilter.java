@@ -40,17 +40,15 @@ public class KeepTicketFilter extends HttpFilter {
 			try {
 				KeepTickets foundTicket = keepDao.findById(code);// 킵 해당 객체
 				Date now = new Date(System.currentTimeMillis());
-				System.out.println(foundTicket.getExpiredAt().before(now));
+				System.out.println(foundTicket.getExpiredAt().after(now));
 
-				if (foundTicket != null && foundTicket.getExpiredAt().before(now)) { // 밸류 무효x
+				if (foundTicket != null && foundTicket.getExpiredAt().after(now)) { // 밸류 무효x
 					String userId = foundTicket.getUserId();
 					userController userDao = new userController();
 
 					Users foundUser = userDao.findById(userId);
 					request.getSession().setAttribute("logonUser", foundUser);
-					AvatarsProcessor avatarDao = new AvatarsProcessor();
-					Avatars foundAvatar = avatarDao.findByKey(foundUser.getAvatarId());
-					request.getSession().setAttribute("logonUserAvatar", foundAvatar);// 반대로 생각하면 찾을때는 요 두개를 찾아야 사진이 나오는거쥬.
+					
 
 				}
 

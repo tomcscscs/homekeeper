@@ -9,6 +9,29 @@ public class SpendLog {
 	Date spendAt;
 	String useDesc;
 	int categoryId;
+	
+	Category category;
+
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public SpendLog(int no, String userId, int amt, Date spendAt, String useDesc, int categoryId, Category category) {
+		super();
+		this.no = no;
+		this.userId = userId;
+		this.amt = amt;
+		this.spendAt = spendAt;
+		this.useDesc = useDesc;
+		this.categoryId = categoryId;
+		this.category = category;
+	}
 
 	public SpendLog() {
 		super();
