@@ -36,7 +36,7 @@ public class UsersDao {
 		}
 		return result;
 	}
-	
+
 	public Users findById(String id) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -50,7 +50,7 @@ public class UsersDao {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				Users one = new Users();
-				
+
 				one.setId(rs.getString("id"));
 				one.setPassword(rs.getString("password"));
 				one.setBirth(rs.getInt("birth"));
@@ -74,7 +74,7 @@ public class UsersDao {
 		}
 
 	}
-	
+
 	public Users findWithAvatarById(String userId) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -88,21 +88,20 @@ public class UsersDao {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				Users user = new Users();
-				
+
 				user.setId(rs.getString("id"));
 				user.setPassword(rs.getString("password"));
 				user.setBirth(rs.getInt("birth"));
 				user.setGender(rs.getString("gender"));
 				user.setNickname(rs.getString("nickname"));
 				user.setAvatarId(rs.getString("avatar_Id"));
-				
-				Avatars a= new Avatars();
+
+				Avatars a = new Avatars();
 				a.setId(rs.getString("avatar_id"));
 				a.setAlt(rs.getString("alt"));
 				a.setImageUrl(rs.getString("image_url"));
-				
+
 				user.setAvatar(a);
-				
 
 				return user;
 			} else {
@@ -116,5 +115,25 @@ public class UsersDao {
 
 	}
 
+	public boolean deleteByNo(int no) throws ClassNotFoundException {
+		boolean result = false;
+		// 1. 데이터 베이스 연결
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
+				"oracle")) {
+			// 2. 필요한 작업요청을 전송하고 응답을 받으면 됨.
+			String sql = "DELETE FROM spend_log WHERE no=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, no);
+
+			int n = pst.executeUpdate(); // 요청 전송하고 DB에서 응답을 받아옴. 삭제는 이게 맞을 듯.
+			if (n == 1) { // PK로 삭제시엔 1 or 0
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

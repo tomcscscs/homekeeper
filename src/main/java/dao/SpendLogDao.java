@@ -68,5 +68,26 @@ public class SpendLogDao {
 		}
 
 	}
+	public boolean deleteByKey(String key) throws ClassNotFoundException { 
+		boolean result = false;
+		// 1. 데이터 베이스 연결
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "torich",
+				"oracle")) {
+			// 2. 필요한 작업요청을 전송하고 응답을 받으면 됨.
+			String sql ="DELETE FROM PLAYERS WHERE ID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, key);
+			
+			int n = pstmt.executeUpdate(); // 요청 전송하고 DB에서 응답을 받아옴.
+			if (n == 1) {	// PK로 삭제시엔 1 or 0
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

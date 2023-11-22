@@ -8,7 +8,7 @@
 <title>롸이트</title>
 </head>
 <body>
-<form action="${pageContext.servletContext.contextPath }/WriteHandle">
+<form action="${pageContext.servletContext.contextPath }/writeComplex" method="post">
 날짜# <input type="date" name="spendAt" value=${now }>
 카테고리# <select name="categoryId">
 <c:forEach var="one" items="${categories }">
@@ -19,7 +19,7 @@
 사용내역# <input type="text" name="useDesc">
 			<button>지출내역기입</button>
 			
-		<c:if test="${#}">
+		<c:if test="${param.error eq true}">
 		<p>데이터등록에 실패했습니다. 다시 시도하세요.</p>
 		</c:if>
 		

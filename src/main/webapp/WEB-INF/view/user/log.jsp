@@ -33,6 +33,7 @@
 </table>
 
 <a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a>
+<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록삭제</button> </a>
 
 
 </body>
