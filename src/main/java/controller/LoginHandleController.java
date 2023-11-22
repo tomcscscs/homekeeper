@@ -60,7 +60,7 @@ public class LoginHandleController extends HttpServlet {
 
 				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");// 
 				
-			}
+			}//이프문의 끝이야.
 			req.setAttribute("loginResult", loginResult);
 
 		} catch (Exception e) {
