@@ -21,7 +21,7 @@ body {
 <div style="font-size: 90px">
 
 
-<div style="font-family:'Noto Serif KR', serif; font-size: 60px; background-color:black; color: white;" ><fmt:formatDate value="${date}" pattern ="yyyy,MM,ddHH:mm:ss"/></div>
+<div style="font-family:'Noto Serif KR', serif; font-size: 60px; background-color:black; color: white;" ><fmt:formatDate value="${date}" pattern ="yyyy,MM,dd   / HH:mm:ss"/></div>
 <p style="font-family:'Noto Serif KR', serif; ">환영합니다.<br><div style="font-family:'Noto Serif KR', serif; ">위해 평화 당신 가계의</div></p>
 
 </div>
