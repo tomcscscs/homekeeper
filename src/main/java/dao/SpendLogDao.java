@@ -89,5 +89,26 @@ public class SpendLogDao {
 		}
 		return result;
 	}
+	
+	public boolean deleteByNo(int no) throws ClassNotFoundException {
+		boolean result = false;
+		// 1. 데이터 베이스 연결
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
+				"oracle")) {
+			// 2. 필요한 작업요청을 전송하고 응답을 받으면 됨.
+			String sql = "DELETE FROM spend_log WHERE no=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, no);
+
+			int n = pst.executeUpdate(); // 요청 전송하고 DB에서 응답을 받아옴. 삭제는 이게 맞을 듯.
+			if (n == 1) { // PK로 삭제시엔 1 or 0
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}//결국에 핵심적인 삭제 기능을 수행하는건 sql문이다. 
 
 }
