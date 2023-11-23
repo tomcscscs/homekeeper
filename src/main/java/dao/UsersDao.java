@@ -76,7 +76,7 @@ public class UsersDao {
 	}
 
 	public Users findWithAvatarById(String userId) throws ClassNotFoundException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.driver.OracleDriver");//
 
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
 				"oracle")) {
