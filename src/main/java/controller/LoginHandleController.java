@@ -28,7 +28,7 @@ public class LoginHandleController extends HttpServlet {
 		UsersDao userCon = new UsersDao();
 		boolean loginResult;
 		try {
-			Users found = userCon.findWithAvatarById(id);// found가 유저스.!!
+			Users found = userCon.findWithAvatarById(id);// found가 유저스.!! 안에 아바타아이디도 같이 들어있음.
 
 			if (found == null || !found.getPassword().equals(password)) {
 				loginResult = false;
@@ -44,7 +44,7 @@ public class LoginHandleController extends HttpServlet {
 				// System.out.println("BBBBB");
 				
 				if (keep != null) {//로그인 유지. keep 체크박스.
-					String code = UUID.randomUUID().toString();// uuid
+					String code = UUID.randomUUID().toString();// uuid 코드생생해서 주기위해
 					String userId = id;
 					Date expiredAt = new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 30);
 
