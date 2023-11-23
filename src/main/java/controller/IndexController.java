@@ -17,14 +17,15 @@ public class IndexController extends HttpServlet {
 
 		req.setAttribute("date", new Date(System.currentTimeMillis()));
 
-		if (req.getSession().getAttribute("logonUser") == null) {
+		if (req.getSession().getAttribute("logonUser") != null) {
 			req.getRequestDispatcher("/WEB-INF/view/user/index2.jsp").forward(req, resp);
 
 		} else {
-			req.getRequestDispatcher("/index.jsp");
+			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+			
 		}
 
-		req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		
 
 	}
 

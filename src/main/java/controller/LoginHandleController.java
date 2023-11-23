@@ -33,6 +33,9 @@ public class LoginHandleController extends HttpServlet {
 			if (found == null || !found.getPassword().equals(password)) {
 				loginResult = false;
 				// System.out.println("AAAA");
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");
+
+				
 				
 			} else {
 				loginResult = true;
@@ -58,16 +61,15 @@ public class LoginHandleController extends HttpServlet {
 
 				}
 
-				resp.sendRedirect(req.getServletContext().getContextPath()+"/index");// 
 				
 			}//이프문의 끝이야.
-			req.setAttribute("loginResult", loginResult);
+			req.setAttribute("loginResult", loginResult);//근데 이건 둘중에 하나밖에 하면 안된다는 사실이다 이거 참. 
+			req.getRequestDispatcher("WEB-INF/view/user/loginHandle_form.jsp").forward(req, resp);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		req.getRequestDispatcher("WEB-INF/view/user/loginHandle_form.jsp").forward(req, resp);
 
 	}
 

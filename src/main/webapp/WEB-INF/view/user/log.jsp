@@ -15,6 +15,8 @@
 
 <table>
 <tr>
+
+<th></th>
 <th>날짜</th>
 <th>내역</th>
 <th>금액</th>
@@ -22,6 +24,8 @@
 </tr>
 <tr>
 <c:forEach var="one" items="${logs}">
+
+<td><input type="checkbox" name="no" value="${one.no }" /> </td>
 <td>${one.spendAt }</td>
 <td>${one.useDesc }</td>
 <td>
@@ -30,11 +34,14 @@
 <td>${one.category.name }</td>
 </tr>
 </c:forEach>
+<tr>
+<td colspan="3">총 합</td>
+<td colspan="2"><fmt:formatNumber value="${total }" pattern="#,###"/> </td>
 </table>
-
-<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a>
+<div style="display:flex; justify-content: space-between; ">
+<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a><br>
 <a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록삭제</button> </a>
-
+</div>
 
 </body>
 </html>
