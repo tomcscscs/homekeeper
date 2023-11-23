@@ -25,7 +25,7 @@ public class LoginHandleController extends HttpServlet {
 		String password = req.getParameter("password");
 		String keep = req.getParameter("keep");
 
-		UsersDao userCon = new UsersDao();
+		UsersDao userCon = new UsersDao();//뀽
 		boolean loginResult;
 		try {
 			Users found = userCon.findWithAvatarById(id);// found가 유저스.!!
