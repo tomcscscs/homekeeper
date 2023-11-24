@@ -11,6 +11,8 @@ import data.KeepTickets;
 import data.Users;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,10 +51,12 @@ public class KeepTicketFilter extends HttpFilter {
 					Users foundUser = userDao.findById(userId);
 					request.getSession().setAttribute("logonUser", foundUser);
 					
+					
 
 				}
 
-			} // if end
+			}
+			// if end
 			catch (Exception e) {
 				e.printStackTrace();
 

@@ -80,7 +80,7 @@ public class UsersDao {
 
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
 				"oracle")) {
-			String sql = "select u.*, a.alt, a.image_url from users u left join  avatars a on u.avatar_id = a.id where id=?";
+			String sql = "select u.*, a.alt, a.image_url from users u left join  avatars a on u.avatar_id = a.id where u.id=?";
 
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, userId);

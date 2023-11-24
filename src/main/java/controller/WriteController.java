@@ -30,7 +30,7 @@ public class WriteController extends HttpServlet {// 두겟
 			e.printStackTrace();
 		}
 
-		req.getRequestDispatcher("/WEB-INF/view/user/write.jsp");
+		req.getRequestDispatcher("/WEB-INF/view/user/write.jsp").forward(req, resp);
 
 	}
 
