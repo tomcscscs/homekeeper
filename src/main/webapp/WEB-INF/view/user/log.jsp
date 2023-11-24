@@ -13,7 +13,43 @@
 </head>
 <body>
 
-<table>
+<div><img alt="pic" src="${pageContext.servletContext.contextPath}${sessionScope.logonUser.avatar.imageUrl}"/></div>
+<div><b> ${sessionScope.logonUser.nickname }</b>님 로그온 하셨습니다.</div>
+
+<select name="sort">
+<c:choose>
+<c:when test="${param.sort eq 'spendAt' }">
+<option value="spendAt" selected>날짜순</option>
+</c:when>
+<c:otherwise>
+<option value="spendAt">날짜순</option>
+</c:otherwise>
+
+
+
+
+
+</c:choose>:
+</select>
+
+
+<form action="${pageContext.servletContext.contextPath }/login">
+<div style="border-bottom-color: red;" align="center"><input type="date" name="begin" value="${param.begin }"/>~
+<input style="border-bottom: thick;" type="date" name ="end" value="${param.end }"/>
+<button type="button">검색</button> 
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+<table border="1" style="width: 1000px ">
 <tr>
 
 <th></th>
@@ -38,8 +74,9 @@
 <td colspan="3">총 합</td>
 <td colspan="2"><fmt:formatNumber value="${total }" pattern="#,###"/> </td>
 </table>
-<div style="display:flex; justify-content: space-between; ">
-<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a><br>
+
+<div>
+<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a>
 <a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록삭제</button> </a>
 </div>
 

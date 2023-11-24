@@ -50,13 +50,11 @@ public class KeepTicketFilter extends HttpFilter {
 
 					Users foundUser = userDao.findById(userId);
 					request.getSession().setAttribute("logonUser", foundUser);
-					
-					
+					chain.doFilter(request, response);
 
 				}
-
-			}
-			// if end
+				chain.doFilter(request, response);
+			} // if end
 			catch (Exception e) {
 				e.printStackTrace();
 
