@@ -24,7 +24,7 @@ public class DummyController extends HttpServlet {
 		try {
 			for (int cnt = 1; cnt <= 30; cnt++) {
 				SpendLog log = new SpendLog();
-				log.setUserId("김찬수");// 마스터라는 이름의 자료들 대량생산.
+				log.setUserId("lulu");// 마스터라는 이름의 자료들 대량생산.
 				log.setAmt(r.nextInt(1, 200) * 500);
 				log.setCategoryId(r.nextInt(1, 14));
 				int month = r.nextInt(1, 12);
