@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>로그 뷰어 페이지.</title>
 </head>
-<body>
+<body style="text-align: center;">
 
 <div><img alt="pic" src="${pageContext.servletContext.contextPath}${sessionScope.logonUser.avatar.imageUrl}"/></div>
 <div><b> ${sessionScope.logonUser.nickname }</b>님 로그온 하셨습니다.</div>
@@ -48,7 +48,7 @@
 
 
 
-
+<form action="${pageContext.servletContext.contextPath }/delete">
 <table border="1" style="width: 1000px ">
 <tr>
 
@@ -75,10 +75,13 @@
 <td colspan="2"><fmt:formatNumber value="${total }" pattern="#,###"/> </td>
 </table>
 
+
 <div>
+<button type="submit">기록삭제</button>
 <a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록추가</button> </a>
-<a href="${pageContext.servletContext.contextPath }/writeComplex"><button>기록삭제</button> </a>
 </div>
+
+</form>
 
 </body>
 </html>
