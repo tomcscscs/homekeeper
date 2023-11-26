@@ -23,7 +23,7 @@ public class JoinController extends HttpServlet {
 			req.setAttribute("avatars", avatars);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();//
 		}
 		req.getRequestDispatcher("/WEB-INF/view/user/join_form.jsp").forward(req, resp);
 
