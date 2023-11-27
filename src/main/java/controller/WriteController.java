@@ -24,7 +24,7 @@ public class WriteController extends HttpServlet {// 두겟
 
 		CategoryDao categoryDao = new CategoryDao();
 		try {
-			List<Category> list = categoryDao.findAll();
+			List<Category> list = categoryDao.findAll();//로그를 다 가지고 오는 부분입니다.
 			req.setAttribute("categories", list);
 		} catch (Exception e) {
 			e.printStackTrace();
