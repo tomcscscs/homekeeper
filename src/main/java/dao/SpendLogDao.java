@@ -70,6 +70,49 @@ public class SpendLogDao {
 
 	}
 
+	public List<SpendLog> findUserDate(String userId, Date begin, Date end) throws ClassNotFoundException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
+				"oracle")) {
+			String sql = "select *from spend_log s join categorys c on s.category_id=c.id where user_id=? and spend_at between ? and ?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, userId);// 요걸 반드시 추가해줘야한다.
+			pst.setDate(2, begin);
+			pst.setDate(3, end);
+
+			ResultSet rs = pst.executeQuery();
+			List<SpendLog> list = new ArrayList<>();
+			while (rs.next()) {
+				SpendLog log = new SpendLog();
+				log.setNo(rs.getInt("no"));
+				log.setUserId(rs.getString("user_id"));
+				log.setAmt(rs.getInt("amt"));
+				log.setSpendAt(rs.getDate("spend_at"));
+				log.setUseDesc(rs.getString("use_desc"));
+				log.setCategoryId(rs.getInt("category_id"));
+				list.add(log);
+				// SpendLog(int no, String userId, int amt, Date spendAt, String useDesc, int
+				// categoryId)
+				/*
+				 * SpendLog log = new SpendLog(rs.getInt("no"), rs.getString("user_id"),
+				 * rs.getInt("amt"), rs.getDate("spend_at"), rs.getString("use_desc"),
+				 * rs.getInt("category_id"),
+				 * 
+				 * new Category(rs.getInt("category_id"), rs.getString("name"))); // 에러났던 이유는
+				 * 생성자가 없었기때문이다. 이걸 // 확인해야해.
+				 * 
+				 * list.add(log);
+				 */
+
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
 	public SpendLog findByNo(int no) throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",

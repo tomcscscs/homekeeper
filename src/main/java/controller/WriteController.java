@@ -36,13 +36,14 @@ public class WriteController extends HttpServlet {// 두겟
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {// 두포스트
-		Date spendAt = Date.valueOf(req.getParameter("spendAt"));
-		int categoryId = Integer.parseInt(req.getParameter("categoryId"));
-		int amt = Integer.parseInt(req.getParameter("amt"));
+		Date spendAt = Date.valueOf(req.getParameter("spendAt"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?
+		int categoryId = Integer.parseInt(req.getParameter("categoryId"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?
+		int amt = Integer.parseInt(req.getParameter("amt"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?
 		String useDesc = req.getParameter("useDesc");// 객체만들기.
+		
 
-		Users user = (Users) req.getSession().getAttribute("logonUser");
-		String userId = user.getId();
+		Users user = (Users) req.getSession().getAttribute("logonUser");//세션을 뽑아서 로그인한 유저만.
+		String userId = user.getId();//세션 이걸 유저아이디라는 곳에 넣어준다. 오케이? 이제부터 세션은 유저아이디.
 
 		SpendLog log = new SpendLog(0, userId, amt, spendAt, useDesc, categoryId, null);// 생성자 기준으로. 나열해야한다. 필요없는건 null.
 
