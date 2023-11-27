@@ -25,7 +25,7 @@ public class WriteController extends HttpServlet {// 두겟
 		CategoryDao categoryDao = new CategoryDao();
 		try {
 			List<Category> list = categoryDao.findAll();//로그를 다 가지고 오는 부분입니다.
-			req.setAttribute("categories", list);
+			req.setAttribute("categories", list);//어쨌든 메서드 덩어리에서 셋을 해줘서 write.jsp로 간다.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,7 +35,7 @@ public class WriteController extends HttpServlet {// 두겟
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {// 두포스트
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {// 두포스트 결국엔 로그에 저장하는 역할을 담당한다.
 		Date spendAt = Date.valueOf(req.getParameter("spendAt"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?
 		int categoryId = Integer.parseInt(req.getParameter("categoryId"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?
 		int amt = Integer.parseInt(req.getParameter("amt"));//요걸로 파라미터를 받는거야. 라이트 jsp로부터 알겠지?

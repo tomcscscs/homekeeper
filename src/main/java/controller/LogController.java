@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/log")
-public class LogController extends HttpServlet {
+public class LogController extends HttpServlet {// 여기 로그 컨트롤러는 포스트를 사용하지 않아. 오늘 목표는 날짜 검색 데이터를 찾는거야.
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
