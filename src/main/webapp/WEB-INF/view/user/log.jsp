@@ -29,13 +29,13 @@
 			<c:otherwise>
 				<option value="spendAt">날짜순</option>
 			</c:otherwise>
-
-
-
-
-
 		</c:choose>:
 	</select>
+
+
+
+
+
 
 
 	<form action="${pageContext.servletContext.contextPath }/log">
