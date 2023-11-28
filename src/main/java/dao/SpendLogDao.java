@@ -90,7 +90,28 @@ public class SpendLogDao {
 				log.setSpendAt(rs.getDate("spend_at"));
 				log.setUseDesc(rs.getString("use_desc"));
 				log.setCategoryId(rs.getInt("category_id"));
+				
+				Category c = new Category();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				log.setCategory(c);
+				
 				list.add(log);
+				
+				
+				
+				
+				
+				/*
+				 * log.setCategory( c.setId(rs.getInt("id")); c.setName(rs.getString("name"));
+				 * );
+				 * 
+				 */
+						
+				
+				
+				
+				
 				// SpendLog(int no, String userId, int amt, Date spendAt, String useDesc, int
 				// categoryId)
 				/*
