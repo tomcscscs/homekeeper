@@ -58,7 +58,7 @@ public class WriteController extends HttpServlet {// 두겟
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.sendRedirect(req.getServletContext().getContextPath() + "/writeComplex?error=true");
+			resp.sendRedirect(req.getServletContext().getContextPath() + "/writeComplex?error=true");//
 
 		}
 
