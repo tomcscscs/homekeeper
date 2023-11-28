@@ -21,7 +21,23 @@
 		<b> ${sessionScope.logonUser.nickname }</b>님 로그온 하셨습니다.
 	</div>
 
-	<select name="sort">
+	
+	<div style="text-align: left;">
+	<a href="${pageContext.servletContext.contextPath }/statisticHandle">1.아이디별 지출 내림차순(findAll)</a>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<%-- <select name="sort">
 		<c:choose>
 			<c:when test="${param.sort eq 'spendAt' }">
 				<option value="spendAt" selected>날짜순</option>
@@ -31,7 +47,7 @@
 			</c:otherwise>
 		</c:choose>:
 	</select>
-
+ --%>
 
 
 
