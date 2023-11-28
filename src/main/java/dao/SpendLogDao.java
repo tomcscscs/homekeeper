@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.Category;
-import data.Item;
 import data.SpendLog;
 import data.Users;
 
@@ -198,7 +197,7 @@ public class SpendLogDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
 				"oracle")) {
-			String sql = "select user_id, max(amt) from spend_log group by user_id order by user_id;";
+			String sql = "select user_id, max(amt) from spend_log group by user_id order by user_id desc";
 			PreparedStatement pst = conn.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();
