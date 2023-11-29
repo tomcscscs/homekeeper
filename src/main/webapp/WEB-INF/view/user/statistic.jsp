@@ -9,13 +9,29 @@
 <title>통계 테스트</title>
 </head>
 <body>
-<a href="${pageContext.servletContext.contextPath }/log">뒤로</a>
+	<a href="${pageContext.servletContext.contextPath }/log">뒤로</a>
 
-<div style="text-align: center;">
-<c:forEach var="one" items="${maxAmt}">
-<p>${maxAmt} 전체가 나와야하는데.
-</c:forEach>
-</div>
+	<div style="text-align: center;">
+		<table border="1" style="margin: 0 auto; width: 1600px; ">
+			<tr>
+				<th>아이디</th>
+				<th>지출액</th>
+			</tr>
+	
+		<c:forEach var="one" items="${maxAmt}">
+	
+			<tr>
+				<td>${one.userId}</td>
+				<td>${one.maxA}</td>
+			
+			</tr>
+			
+							
+			
+			
+		</c:forEach>
+		</table>
+	</div>
 
 </body>
 </html>

@@ -10,6 +10,7 @@ import java.util.List;
 
 import data.Category;
 import data.SpendLog;
+import data.StatisticVO;
 import data.Users;
 
 public class SpendLogDao {
@@ -193,28 +194,23 @@ public class SpendLogDao {
 		return result;
 	}// 결국에 핵심적인 삭제 기능을 수행하는건 sql문이다.
 	
-	public List<SpendLog> statisticFindAll() throws ClassNotFoundException {
+	public List<StatisticVO> statisticFindAll() throws ClassNotFoundException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@43.201.68.36:1521:xe", "homekeeper",
 				"oracle")) {
-			String sql = "select user_id, max(amt) from spend_log group by user_id order by user_id desc";
+			String sql = "select user_id, max(amt) as max from spend_log group by user_id order by user_id desc";
 			PreparedStatement pst = conn.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();
-			List<SpendLog> list = new ArrayList<>();
+			List<StatisticVO> list = new ArrayList<>();
 			
 			
 			while (rs.next()) {
-				SpendLog log = new SpendLog();
-				log.setNo(rs.getInt("no"));
+				StatisticVO log = new StatisticVO();
+				
 				log.setUserId(rs.getString("user_id"));
-				log.setAmt(rs.getInt("max(amt)"));
-				log.setSpendAt(rs.getDate("spend_at"));
-				log.setUseDesc(rs.getString("use_desc"));
-				log.setCategoryId(rs.getInt("category_id"));
-				
+				log.setMaxA(rs.getInt("max"));
 				list.add(log);
-				
 				/*
 				 * spendLog one = new Item(no, userId, amt, spendAt, useDesc, categoryId); list.add(one);
 				 */

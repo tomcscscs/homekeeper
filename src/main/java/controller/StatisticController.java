@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.SpendLogDao;
 import data.SpendLog;
+import data.StatisticVO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ public class StatisticController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		SpendLogDao spendDao = new SpendLogDao();
-		List<SpendLog> maxAmt;
+		List<StatisticVO> maxAmt;
 
 		try {
 			maxAmt = spendDao.statisticFindAll();
@@ -26,6 +27,7 @@ public class StatisticController extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		req.getRequestDispatcher("/WEB-INF/view/user/statistic.jsp").forward(req, resp);
 	}
 
 }
