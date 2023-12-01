@@ -18,20 +18,15 @@
         var data = google.visualization.arrayToDataTable([
         	
          ['아이디', '지출액'],
-         ['2023',442],
-         ['2024', 33],
-         ['2025', 446]
+         [${userId},${maxA}]
+       
         	
-        	
-        	
-        	
-        	/*  ['아이디', '지출액'],
-          ['2013',  1000],
-          ['2014',  1170],
-          ['2015',  660],
-          ['2016',  1030] */
-         
         ]);
+        	
+        	
+        	
+       
+         
 
         var options = {
           title: 'Company Performance',
